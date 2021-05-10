@@ -1,11 +1,14 @@
 import { createApp } from 'vue'
-import vuetify from './plugins/vuetify'
 import App from './App.vue'
 import store from './store'
 import router from './router'
+import PrimeVue from 'primevue/config'
+import 'primevue/resources/themes/saga-blue/theme.css'
+import 'primevue/resources/primevue.min.css'
+import 'primeicons/primeicons.css'
 
-const app = createApp(App).use(router)
+const app = createApp(App)
+app.use(router)
 app.use(store)
-app.use(vuetify)
-
+app.use(PrimeVue)
 app.mount('#app')
