@@ -1,9 +1,6 @@
 <template>
-  <div>
+  <div class="authorization-page">
     <Login/>
-  </div>
-  <div>
-    TEST TEST
   </div>
 </template>
 
@@ -12,13 +9,15 @@ import Login from "../components/Authorization/Login";
 
 export default {
   name: "Authorization",
-  components:{
+  components: {
     Login
   }
 
 }
 </script>
 
-<style scoped>
-
+<style scoped lang="scss">
+  .authorization-page{
+    
+  }
 </style>
