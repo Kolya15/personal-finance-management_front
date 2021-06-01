@@ -1,75 +1,126 @@
 <template>
     <div class="wrapper-form">
         <h2>Войти</h2>
-      <div class="login-form">
-        <div class="login-form__input p-input-icon-left">
-          <i class="pi pi-user"/>
-          <InputText type="text" v-model="user.name" />
+        <div v-if="isLogin" class="login-form">
+            <div class="login-form__input">
+                <p class="label">User name</p>
+                <InputText type="text" v-model="user.name"/>
+            </div>
+            <div class="login-form__input login-form__input_password">
+                <p class="label">Password</p>
+                <Password v-model="user.password" toggleMask/>
+            </div>
         </div>
-        <div class="login-form__input p-input-icon-left">
-          <i class="pi pi-lock"/>
-          <InputText type="password" v-model="user.password" />   
+        <div v-else>
+            <div class="login-form__input">
+                <p class="label">User name</p>
+                <InputText type="text" v-model="newUser.name"/>
+            </div>
+            <div class="login-form__input">
+                <p class="label">Password</p>
+                <Password v-model="newUser.password" toggleMask/>
+            </div>
+            <div class="login-form__input p-input-icon-left">
+                <p class="label">Confirm Password</p>
+                <Password v-model="newUser.confirmPassword" toggleMask/>
+            </div>
         </div>
-      </div>
-      <Button label="Вход" @click="signIn()" class="login-form__button p-button-rounded" />  
-        <Button label="Регистрация" @click="signUp()" class="login-form__button p-button-secondary p-button-outlined p-button-rounded" /> 
-  </div>
+        <Button :label="isLogin ? 'Вход' : 'Регистрация'"  @click="signIn()" class="login-form__button p-button-rounded"/>
+        <Button :label="isLogin ? 'Регистрация' : 'Вход'" @click="changeVisibleForm()"
+                class="login-form__button p-button-secondary p-button-outlined p-button-rounded"/>
+    </div>
 
 </template>
 
 <script>
 import InputText from 'primevue/inputtext';
+import Password from 'primevue/password';
 import Button from 'primevue/button';
 
+import {ref, reactive} from 'vue'
+
 export default {
-  name: "Login",
-  components: {
-    InputText,
-    Button
-  },
-  data(){
-    return{
-      user: {
-        name: '',
-        password: ''
-      }
-    }
-  },
-  methods: {
-    signIn(){
-      console.log(this.user.name);
+    name: "Login",
+    components: {
+        InputText,
+        Password,
+        Button
     },
-    signUp(){
-      console.log('signUp');
+    setup() {
+        const user = reactive({
+            name: '',
+            password: ''
+        })
+
+        const newUser = reactive({
+            name: '',
+            password: '',
+            confirmPassword: ''
+        })
+
+        const errorList = {
+            email: {
+                show: false,
+                emailAlreadyTaken: 'Email already taken',
+            },
+            password: {
+                show: false,
+                passwordBeLessThan8: 'Password must be at least 8 characters',
+                passwordMismatch: 'Password mismatch'
+            }
+
+        }
+
+        let isLogin = ref(true)
+
+        const signIn = () => {
+            console.log(user)
+        }
+        const changeVisibleForm = () => isLogin.value = !isLogin.value
+
+        return {user, errorList, newUser, isLogin,  signIn, changeVisibleForm}
     }
-  }
 }
 </script>
 
-<style scoped lang="scss">
-  .wrapper-form{
-    background: red;
+<style lang="scss">
+.wrapper-form {
     width: 500px;
     padding: 20px 40px;
     border-radius: 8px;
     box-shadow: 0 9px 40px 3px rgb(0 11 34 / 7%);
     background-color: #fff;
-  }
-    .login-form{
-      // display: flex;
-      // flex-direction: column;
-      // align-items: center;
-      &__input{
+}
+
+.login-form {
+    &__input {
         width: 100%;
-        margin-bottom: 20px;
-        input {
-          width: 100%;
+        margin-bottom: 30px;
+
+        .label{
+            display: flex;
+            margin-bottom: 5px;
+            font-size: 0.8em;
+            color: #787878;
         }
-      }
-      &__button {
+
+        input {
+            width: 100%;
+        }
+
+        .p-password {
+            width: 100% ;
+            input{
+                width: 100% ;
+            }
+        }
+    }
+
+    &__button {
         margin-top: 20px;
         width: 100%;
 
-      }
     }
+}
+
 </style>
