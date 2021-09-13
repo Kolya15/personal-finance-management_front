@@ -2,12 +2,30 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
   {
-    path: '/login',
-    name: 'login',
+    path: '/auth',
+    name: 'auth',
     meta: {
       layout: 'AuthLayout'
     },
-    component: () => import('../views/Authorization.vue')
+    component: () => import('../views/auth/Auth'),
+    children: [
+      {
+        path: 'login',
+        name: 'login',
+        meta: {
+          layout: 'AuthLayout'
+        },
+        component: () => import('../views/auth/login/Login')
+      },
+      {
+        path: 'registration',
+        name: 'registration',
+        meta: {
+          layout: 'AuthLayout'
+        },
+        component: () => import('../views/auth/registration/Registration')
+      },
+    ]
   },
   {
     path: '/main',

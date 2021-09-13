@@ -37,7 +37,7 @@ import InputText from 'primevue/inputtext';
 import Password from 'primevue/password';
 import Button from 'primevue/button';
 
-import {ref, reactive} from 'vue'
+import {inject, ref, reactive} from 'vue'
 
 export default {
     name: "Login",
@@ -73,8 +73,20 @@ export default {
 
         let isLogin = ref(true)
 
+        const apiUrls = inject('apiUrls')
+        const http = inject( 'http')
         const signIn = () => {
-            console.log(user)
+            if(isLogin.value) {
+                http.post(apiUrls.auth.login, {
+                    userName: user.name,
+                    password: user.password
+                })
+            } else {
+                http.post(apiUrls.auth.registration, {
+                    userName: newUser.name,
+                    password: newUser.password
+                })
+            }
         }
         const changeVisibleForm = () => isLogin.value = !isLogin.value
 
