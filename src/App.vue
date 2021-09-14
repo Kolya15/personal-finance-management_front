@@ -1,24 +1,36 @@
 <template>
-  <div id="app">
-    <component :is="layout">
-        <router-view/>
-    </component>
-  </div>
+    <div id="app">
+        <component :is="layout">
+            <router-view/>
+        </component>
+    </div>
 </template>
 
 <script>
 import AuthLayout from "./layouts/AuthLayout";
-import MainLayout from "./layouts/MainLayout";
+import MainLayout from "./layouts/main/MainLayout";
+import apiUrls from './api/apiUrls';
+import http from './api';
+
+import './style/reset.scss'
+
 export default {
-  computed: {
-    layout(){
-      return (this.$route.meta.layout || 'AuthLayout')
+    computed: {
+        layout() {
+            return (this.$route.meta.layout || 'AuthLayout')
+        }
+    },
+    provide() {
+        console.log(apiUrls)
+        return {
+            apiUrls,
+            http
+        }
+    },
+    components: {
+        AuthLayout,
+        MainLayout
     }
-  },
-  components: {
-    AuthLayout,
-    MainLayout
-  }
 }
 
 </script>
@@ -28,13 +40,14 @@ body, p {
     margin: 0;
     padding: 0;
 }
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+
 }
 
 // #nav {
