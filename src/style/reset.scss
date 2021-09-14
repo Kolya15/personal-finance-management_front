@@ -27,7 +27,8 @@ dd {
 }
 
 body {
-  min-height: 100vh;
+  height: 100%;
+  overflow: hidden;
   scroll-behavior: smooth;
   text-rendering: optimizeSpeed;
   line-height: 1.5;

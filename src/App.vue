@@ -8,7 +8,7 @@
 
 <script>
 import AuthLayout from "./layouts/AuthLayout";
-import MainLayout from "./layouts/MainLayout";
+import MainLayout from "./layouts/main/MainLayout";
 import apiUrls from './api/apiUrls';
 import http from './api';
 

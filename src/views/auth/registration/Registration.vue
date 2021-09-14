@@ -1,5 +1,5 @@
 <template>
-    <div class="wrapper-form">
+    <div>
         <div class="wrapper-form__header">
             <h2 class="form-header__title">Регистрация</h2>
             <router-link to="/auth/login" class="form-header__subtitle">
@@ -7,20 +7,20 @@
             </router-link>
         </div>
         <div>
-            <div class="registration-form__input">
+            <div class="auth-form__input">
                 <p class="label">User name</p>
                 <InputText type="text" v-model="newUser.name"/>
             </div>
-            <div class="registration-form__input">
+            <div class="auth-form__input">
                 <p class="label">Password</p>
                 <Password v-model="newUser.password" toggleMask/>
             </div>
-            <div class="registration-form__input p-input-icon-left">
+            <div class="auth-form__input p-input-icon-left">
                 <p class="label">Confirm Password</p>
                 <Password v-model="newUser.confirmPassword" toggleMask/>
             </div>
         </div>
-        <Button label="Регистрация"  @click="registration()" class="login-form__button p-button-rounded"/>
+        <Button label="Регистрация"  @click="registration()" class="auth-form__button p-button-rounded"/>
     </div>
 
 </template>
@@ -31,6 +31,7 @@ import Password from 'primevue/password';
 import Button from 'primevue/button';
 
 import {inject, reactive} from 'vue'
+import {useStore} from 'vuex'
 
 export default {
     name: "Registration",
@@ -40,6 +41,8 @@ export default {
         Button
     },
     setup() {
+        const store = useStore()
+
         const newUser = reactive({
             name: '',
             password: '',
@@ -60,14 +63,8 @@ export default {
         }
 
         const apiUrls = inject('apiUrls')
-        const http = inject( 'http')
         const registration = () => {
-            http.post(apiUrls.auth.registration, {
-                userName: newUser.name,
-                password: newUser.password,
-            }).then((response) => {
-                console.log(response)
-            })
+            store.dispatch('loginOrRegistration', {url: apiUrls.auth.registration, user:newUser })
         }
 
         return { errorList, newUser,  registration}
@@ -76,36 +73,5 @@ export default {
 </script>
 
 <style lang="scss">
-
-.registration-form {
-    &__input {
-        width: 100%;
-        margin-bottom: 30px;
-
-        .label{
-            display: flex;
-            margin-bottom: 5px;
-            font-size: 0.8em;
-            color: #787878;
-        }
-
-        input {
-            width: 100%;
-        }
-
-        .p-password {
-            width: 100% ;
-            input{
-                width: 100% ;
-            }
-        }
-    }
-
-    &__button {
-        margin-top: 20px;
-        width: 100%;
-
-    }
-}
 
 </style>
