@@ -4,6 +4,9 @@ export default {
         login: 'auth/login'
     },
     users: {
-        get: '/user/all'
+        get: 'user/all'
+    },
+    income: {
+        addIncome: 'income/add'
     }
 }

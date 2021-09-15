@@ -1,0 +1,16 @@
+{
+    "global": {
+        "income": "Дохід",
+        "expense": "Витрата",
+        "amount": "Сума",
+        "description": "Опис",
+        "category": "Категорія"
+    },
+    "income": {
+        "newIncome": "Новий дохід",
+        "addIncome": "Add income"
+    },
+    "expenses": {
+        "newExpenses": "Нова витрата"
+    }
+}

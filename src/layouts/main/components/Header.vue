@@ -8,8 +8,8 @@
 
         </div>
         <div class="header__actions">
-            <Button label="Plus" icon="pi pi-plus" class="header__actions_income"/>
-            <Button label="Minus" icon="pi pi-minus"  class="header__actions_consumption p-button-danger"/>
+            <Button :label="$t('global.income')" icon="pi pi-plus" class="header__actions_income" @click="addIncome()"/>
+            <Button :label="$t('global.expense')" icon="pi pi-minus"  class="header__actions_expenses p-button-danger"/>
         </div>
         <div class="header__settings">
             <p>settings</p>
@@ -18,9 +18,23 @@
 </template>
 
 <script>
-
+import { useI18n } from 'vue-i18n'
+import {useStore} from 'vuex'
 export default {
-    name: 'Header'
+    name: 'Header',
+    setup() {
+        const { t } = useI18n()
+        const store = useStore()
+        const addIncome = () => {
+            store.commit('setDialog', {
+                title: t('income.newIncome'),
+                childName: 'incomeWindow',
+                data: [{id: 1}, {id: 2}]
+            })
+        }
+
+        return {addIncome}
+    }
 }
 </script>
 
@@ -71,7 +85,7 @@ export default {
         //    }
         //}
 
-        //&_consumption {
+        //&_expenses {
         //
         //}
     }

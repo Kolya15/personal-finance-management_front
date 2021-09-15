@@ -1,5 +1,6 @@
 <template>
 <div class="main-layout">
+    <DialogWindow/>
     <custom-header class="main-layout__header"/>
     <div class="main-layout__content">
         <SideWindowWithInformation/>
@@ -11,11 +12,14 @@
 <script>
 import CustomHeader from './components/Header'
 import SideWindowWithInformation from './components/SideWindowWithInformation'
+import DialogWindow from '../../components/windows/DialogWindow'
+
 export default {
   name: "MainLayout",
     components: {
         CustomHeader,
-        SideWindowWithInformation
+        SideWindowWithInformation,
+        DialogWindow
     }
 }
 </script>

@@ -11,8 +11,8 @@ import AuthLayout from "./layouts/AuthLayout";
 import MainLayout from "./layouts/main/MainLayout";
 import apiUrls from './api/apiUrls';
 import http from './api';
-
 import './style/reset.scss'
+import './style/global.scss'
 
 export default {
     computed: {
@@ -25,6 +25,7 @@ export default {
         return {
             apiUrls,
             http
+            // t: VueI18n.useI18n()
         }
     },
     components: {
