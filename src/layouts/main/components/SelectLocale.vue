@@ -36,7 +36,7 @@ export default {
             }
         ])
 
-        const openList = ref(true)
+        const openList = ref(false)
 
         const selectedLocale = ref( localStorage.getItem('locale') || 'en')
 
@@ -61,7 +61,7 @@ export default {
 
 .select-locale {
     position: relative;
-
+    cursor: pointer;
     &__current {
         display: flex;
         align-items: center;
@@ -72,8 +72,6 @@ export default {
             margin-right: 5px;
         }
     }
-
-
 
     &__list {
         position: absolute;

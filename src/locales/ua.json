@@ -4,13 +4,15 @@
         "expense": "Витрата",
         "amount": "Сума",
         "description": "Опис",
-        "category": "Категорія"
+        "category": "Категорія",
+        "date": "Дата"
     },
     "income": {
         "newIncome": "Новий дохід",
-        "addIncome": "Add income"
+        "addIncome": "Додати дохід"
     },
     "expenses": {
-        "newExpenses": "Нова витрата"
+        "newExpense": "Нова витрата",
+        "addExpense": "Додати витрату"
     }
 }

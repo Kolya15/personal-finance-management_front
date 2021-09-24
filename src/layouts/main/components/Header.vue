@@ -13,7 +13,8 @@
             <Button :label="i18n.$t('global.income')" icon="pi pi-plus" class="header__actions_income"
                     @click="addIncome()"/>
             <Button :label="i18n.$t('global.expense')" icon="pi pi-minus"
-                    class="header__actions_expenses p-button-danger"/>
+                    class="header__actions_expenses p-button-danger"
+                    @click="addExpense()"/>
         </div>
         <div class="header__settings">
             <p>settings</p>
@@ -34,18 +35,26 @@ export default {
     },
     setup() {
         const i18n = useI18n();
-
-
         const store = useStore()
+
         const addIncome = () => {
             store.commit('setDialog', {
-                // title: t('income.newIncome'),
-                childName: 'incomeWindow',
-                data: [{id: 1}, {id: 2}]
+                title: i18n.$t('income.newIncome'),
+                childName: 'incomeWindow'
+            })
+        }
+        const addExpense = () => {
+            store.commit('setDialog', {
+                title: i18n.$t('expenses.newExpense'),
+                childName: 'expenseWindow'
             })
         }
 
-        return {addIncome, i18n}
+        return {
+            i18n,
+            addIncome,
+            addExpense
+        }
     }
 }
 </script>

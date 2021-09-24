@@ -7,6 +7,7 @@
         class="dialog"
     >
         <IncomeWindow v-if="dialog.childName === 'incomeWindow'"/>
+        <ExpenseWindow v-if="dialog.childName === 'expenseWindow'"/>
     </Dialog>
 </template>
 <script>
@@ -15,11 +16,13 @@ import {useStore} from 'vuex'
 
 import Dialog from 'primevue/dialog'
 import IncomeWindow from '../IncomeWindow'
+import ExpenseWindow from '../ExpenseWindow'
 export default {
     name: 'DialogWindow',
     components: {
         Dialog,
-        IncomeWindow
+        IncomeWindow,
+        ExpenseWindow
     },
     setup() {
         const store = useStore()

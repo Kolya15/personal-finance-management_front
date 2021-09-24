@@ -10,7 +10,7 @@
                 <Dropdown v-model="income.categoryId" :options="listCategory" optionLabel="name" optionValue="_id" placeholder="Select a category" class="width-full"/>
             </div>
             <div class="p-col-12">
-                <p class="label">{{test.$t('global.category')}}</p>
+                <p class="label">{{test.$t('global.date')}}</p>
                 <Calendar id="basic" v-model="income.date" class="width-full" :max-date="new Date()" dateFormat="mm-dd-yy"/>
             </div>
             <div class="p-col-12">
@@ -52,16 +52,14 @@ export default {
         const http = inject('http')
         const apiUrls = inject('apiUrls')
         const submit = () => {
-            http.post(apiUrls.income.addIncome, income).then(response => {
-                console.log(response)
-            })
+            console.log(income)
+            // http.post(apiUrls.income.addIncome, income).then(response => {
+            //     console.log(response)
+            // })
         }
 
         http.get(apiUrls.categories.income.get).then(response => {
             listCategory.value = response.data.category
-            console.log(response)
-
-            console.log('listCategory', listCategory)
         })
 
 
