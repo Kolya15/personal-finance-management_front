@@ -11,17 +11,19 @@ import AuthLayout from "./layouts/AuthLayout";
 import MainLayout from "./layouts/main/MainLayout";
 import apiUrls from './api/apiUrls';
 import http from './api';
-
 import './style/reset.scss'
-
+import './style/global.scss'
+import { provideI18n} from "./plugin/i18n";
 export default {
     computed: {
         layout() {
             return (this.$route.meta.layout || 'AuthLayout')
         }
     },
+    setup() {
+        provideI18n();
+    },
     provide() {
-        console.log(apiUrls)
         return {
             apiUrls,
             http

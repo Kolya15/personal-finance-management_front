@@ -11,10 +11,12 @@
     "@mdi/font": "5.9.55",
     "axios": "^0.21.4",
     "core-js": "^3.6.5",
+    "country-flags-svg": "^1.1.1",
     "primeicons": "^4.1.0",
     "primevue": "^3.3.5",
     "roboto-fontface": "*",
     "vue": "^3.0.0",
+    "vue-i18n": "^9.1.7",
     "vue-router": "^4.0.0-0",
     "vuex": "^4.0.0-0"
   },

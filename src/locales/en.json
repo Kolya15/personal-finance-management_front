@@ -1,0 +1,17 @@
+{
+    "global": {
+        "income": "Income",
+        "expense": "Expense",
+        "amount": "Amount",
+        "description": "Description",
+        "category": "Category"
+    },
+
+    "income": {
+        "newIncome": "New income",
+        "addIncome": "Add income"
+    },
+    "expenses": {
+        "newExpenses": "New expenses"
+    }
+}

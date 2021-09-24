@@ -4,6 +4,15 @@ export default {
         login: 'auth/login'
     },
     users: {
-        get: '/user/all'
+        get: 'user/all'
+    },
+    income: {
+        addIncome: 'income/add'
+    },
+    categories: {
+        income: {
+            get: 'categories/income/',
+            add: 'categories/income/add'
+        }
     }
 }

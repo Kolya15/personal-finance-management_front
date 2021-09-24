@@ -1,18 +1,21 @@
-import { createStore } from 'vuex'
+import {createStore} from 'vuex'
+
+// Modules
 import auth from './modules/auth'
+import windows from './modules/windows'
+
 
 export default createStore({
-  state: {
-    test: 'test'
-  },
-  mutations: {
-  },
-  actions: {
-  },
-  getters: {
-    test: state => state.test
-  },
-  modules: {
-    auth
-  }
+    state: {
+        test: 'test'
+    },
+    mutations: {},
+    actions: {},
+    getters: {
+        test: state => state.test
+    },
+    modules: {
+        auth,
+        windows
+    }
 })
