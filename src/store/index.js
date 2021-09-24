@@ -2,7 +2,6 @@ import {createStore} from 'vuex'
 
 // Modules
 import auth from './modules/auth'
-import locale from './modules/locale'
 import windows from './modules/windows'
 
 
@@ -17,7 +16,6 @@ export default createStore({
     },
     modules: {
         auth,
-        locale,
         windows
     }
 })

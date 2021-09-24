@@ -4,12 +4,16 @@
             <div class="header__user_logo">
                 <i class="pi pi-user"/>
             </div>
-            <p class="header__user_name">Kolyan</p>
-
+            <div>
+                <p class="header__user_name">Kolyan</p>
+                <SelectLocale/>
+            </div>
         </div>
         <div class="header__actions">
-            <Button :label="$t('global.income')" icon="pi pi-plus" class="header__actions_income" @click="addIncome()"/>
-            <Button :label="$t('global.expense')" icon="pi pi-minus"  class="header__actions_expenses p-button-danger"/>
+            <Button :label="i18n.$t('global.income')" icon="pi pi-plus" class="header__actions_income"
+                    @click="addIncome()"/>
+            <Button :label="i18n.$t('global.expense')" icon="pi pi-minus"
+                    class="header__actions_expenses p-button-danger"/>
         </div>
         <div class="header__settings">
             <p>settings</p>
@@ -18,22 +22,30 @@
 </template>
 
 <script>
-import { useI18n } from 'vue-i18n'
+import {useI18n} from "../../../plugin/i18n";
 import {useStore} from 'vuex'
+
+import SelectLocale from './SelectLocale';
+
 export default {
     name: 'Header',
+    components: {
+        SelectLocale
+    },
     setup() {
-        const { t } = useI18n()
+        const i18n = useI18n();
+
+
         const store = useStore()
         const addIncome = () => {
             store.commit('setDialog', {
-                title: t('income.newIncome'),
+                // title: t('income.newIncome'),
                 childName: 'incomeWindow',
                 data: [{id: 1}, {id: 2}]
             })
         }
 
-        return {addIncome}
+        return {addIncome, i18n}
     }
 }
 </script>
@@ -44,12 +56,11 @@ export default {
     display: flex;
     justify-content: space-between;
     padding: 10px 0;
-    width: 100%;
     background-color: #181D1F;
 
     &__user {
         display: flex;
-        align-items: center;
+
         &_logo {
             border-radius: 50%;
             background-color: #ffffff;
@@ -60,12 +71,13 @@ export default {
             align-items: center;
             color: #000000;
         }
+
         &_name {
             margin-left: 10px;
         }
     }
 
-    &__actions{
+    &__actions {
         display: grid;
         grid-column-gap: 20px;
         grid-template-columns: repeat(2, 1fr);

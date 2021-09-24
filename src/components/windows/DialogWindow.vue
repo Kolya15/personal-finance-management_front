@@ -14,7 +14,7 @@ import { computed } from 'vue'
 import {useStore} from 'vuex'
 
 import Dialog from 'primevue/dialog'
-import IncomeWindow from '../../layouts/main/components/IncomeWindow'
+import IncomeWindow from '../IncomeWindow'
 export default {
     name: 'DialogWindow',
     components: {

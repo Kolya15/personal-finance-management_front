@@ -13,19 +13,20 @@ import apiUrls from './api/apiUrls';
 import http from './api';
 import './style/reset.scss'
 import './style/global.scss'
-
+import { provideI18n} from "./plugin/i18n";
 export default {
     computed: {
         layout() {
             return (this.$route.meta.layout || 'AuthLayout')
         }
     },
+    setup() {
+        provideI18n();
+    },
     provide() {
-        console.log(apiUrls)
         return {
             apiUrls,
             http
-            // t: VueI18n.useI18n()
         }
     },
     components: {

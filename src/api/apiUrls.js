@@ -8,5 +8,11 @@ export default {
     },
     income: {
         addIncome: 'income/add'
+    },
+    categories: {
+        income: {
+            get: 'categories/income/',
+            add: 'categories/income/add'
+        }
     }
 }
