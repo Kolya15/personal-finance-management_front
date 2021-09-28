@@ -14,5 +14,8 @@
     "expenses": {
         "newExpense": "Нова витрата",
         "addExpense": "Додати витрату"
+    },
+    "validationError": {
+        "required": "Поле має бути заповнене"
     }
 }

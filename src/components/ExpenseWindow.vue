@@ -37,6 +37,7 @@ export default {
         Calendar
     },
     setup() {
+
         const i18n = useI18n()
 
         const expense = reactive({

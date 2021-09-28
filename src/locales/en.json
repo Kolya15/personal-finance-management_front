@@ -15,5 +15,8 @@
     "expenses": {
         "newExpense": "New expenses",
         "addExpense": "Add expense"
+    },
+    "validationError": {
+        "required": "This field is required"
     }
 }

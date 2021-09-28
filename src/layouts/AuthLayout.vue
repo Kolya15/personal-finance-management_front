@@ -11,8 +11,13 @@
 </template>
 
 <script>
+import {useStore} from 'vuex'
 export default {
-    name: "AuthLayout"
+    name: "AuthLayout",
+    setup(){
+        const store = useStore()
+        store.commit('hideDialog')
+    }
 }
 </script>
 

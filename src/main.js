@@ -8,14 +8,16 @@ import 'primevue/resources/primevue.min.css'
 import 'primeicons/primeicons.css'
 import Button from 'primevue/button'
 import InputNumber from 'primevue/inputnumber'
-
+import ToastService from 'primevue/toastservice'
 const app = createApp(App)
 
+import "./utils/defineRule";
 app.component('Button', Button)
 app.component('InputNumber', InputNumber)
 
 app.use(router)
 app.use(store)
 app.use(PrimeVue)
+app.use(ToastService);
 app.mount('#app')
 

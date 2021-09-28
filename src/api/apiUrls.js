@@ -3,6 +3,9 @@ export default {
         registration: 'auth/registration',
         login: 'auth/login'
     },
+    currentUser: {
+        get: 'current-user'
+    },
     users: {
         get: 'user/all'
     },
