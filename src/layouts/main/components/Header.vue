@@ -10,10 +10,11 @@
             </div>
         </div>
         <div class="header__actions">
-            <Button :label="i18n.$t('global.income')" icon="pi pi-plus" class="header__actions_income"
+            <Button :label="$t('global.income')" icon="pi pi-plus" class="header__actions_income"
                     @click="addIncome()"/>
-            <Button :label="i18n.$t('global.expense')" icon="pi pi-minus"
-                    class="header__actions_expenses p-button-danger"/>
+            <Button :label="$t('global.expense')" icon="pi pi-minus"
+                    class="header__actions_expenses p-button-danger"
+                    @click="addExpense()"/>
         </div>
         <div class="header__settings">
             <p>settings</p>
@@ -22,7 +23,7 @@
 </template>
 
 <script>
-import {useI18n} from "../../../plugin/i18n";
+import {inject} from 'vue'
 import {useStore} from 'vuex'
 
 import SelectLocale from './SelectLocale';
@@ -33,19 +34,26 @@ export default {
         SelectLocale
     },
     setup() {
-        const i18n = useI18n();
-
-
+        const {t} = inject('i18n');
         const store = useStore()
+
         const addIncome = () => {
             store.commit('setDialog', {
-                // title: t('income.newIncome'),
-                childName: 'incomeWindow',
-                data: [{id: 1}, {id: 2}]
+                title: t('income.newIncome'),
+                childName: 'income',
+            })
+        }
+        const addExpense = () => {
+            store.commit('setDialog', {
+                title: t('expenses.newExpense'),
+                childName: 'expense'
             })
         }
 
-        return {addIncome, i18n}
+        return {
+            addIncome,
+            addExpense
+        }
     }
 }
 </script>

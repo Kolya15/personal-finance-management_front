@@ -1,5 +1,6 @@
 <template>
     <div id="app">
+        <Toast position="bottom-right"/>
         <component :is="layout">
             <router-view/>
         </component>
@@ -13,7 +14,12 @@ import apiUrls from './api/apiUrls';
 import http from './api';
 import './style/reset.scss'
 import './style/global.scss'
-import { provideI18n} from "./plugin/i18n";
+import {useStore} from 'vuex'
+import {watchEffect} from "vue";
+import Toast from 'primevue/toast';
+import { useToast } from 'primevue/usetoast'
+import {i18n} from "./plugin/i18n";
+
 export default {
     computed: {
         layout() {
@@ -21,17 +27,29 @@ export default {
         }
     },
     setup() {
-        provideI18n();
+        const store = useStore()
+        const toast = useToast();
+        watchEffect(() => {
+            const message = {...store.getters.getNotification}
+            if (message.state) {
+                toast.add(message);
+                setTimeout(() => {
+                    store.commit('hideNotification')
+                }, message.life)
+            }
+        })
     },
     provide() {
         return {
             apiUrls,
-            http
+            http,
+            i18n: i18n.global
         }
     },
     components: {
         AuthLayout,
-        MainLayout
+        MainLayout,
+        Toast
     }
 }
 

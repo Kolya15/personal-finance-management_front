@@ -1,4 +1,4 @@
-import { ref, provide, inject } from "vue";
+import {createI18n} from "vue-i18n";
 
 export function loadLocaleMessages() {
     const locales = require.context(
@@ -17,45 +17,16 @@ export function loadLocaleMessages() {
     return messages
 }
 
+
 function checkDefaultLanguage() {
-    let matched = null
-    const languages = Object.getOwnPropertyNames(loadLocaleMessages())
-    languages.forEach(lang => {
-        if(lang === navigator.language) {
-            matched = lang
-        }
-    })
-    if(!matched) {
-        languages.forEach(lang => {
-            const languagePartials = navigator.language.split('-')[0]
-            if(lang === languagePartials) {
-                matched = lang
-            }
-        })
+    const languages = Object.keys(loadLocaleMessages())
+    const languagePartials = navigator.language.split('-')[0]
+    if(languagePartials) {
+        return languages.find(lang => lang === languagePartials)
     }
-    return matched
 }
 
-const createI18n = () => ({
-    locale: ref(localStorage.getItem('locale') || checkDefaultLanguage() || 'en'),
+export const i18n = createI18n({
+    locale: localStorage.getItem('locale') || checkDefaultLanguage() || 'en',
     messages: loadLocaleMessages(),
-    $t(key) {
-        const [one, two] = key.split('.')
-        return this.messages[this.locale.value][one][two];
-    }
 });
-
-const i18nSymbol = Symbol();
-
-export function provideI18n(i18nConfig) {
-    const i18n = createI18n(i18nConfig);
-    provide(i18nSymbol, i18n);
-}
-
-
-export function useI18n() {
-    const i18n = inject(i18nSymbol);
-    if (!i18n) throw new Error("No i18n provided!!!");
-
-    return i18n;
-}

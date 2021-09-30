@@ -4,7 +4,8 @@
         "expense": "Expense",
         "amount": "Amount",
         "description": "Description",
-        "category": "Category"
+        "category": "Category",
+        "date": "Date"
     },
 
     "income": {
@@ -12,6 +13,10 @@
         "addIncome": "Add income"
     },
     "expenses": {
-        "newExpenses": "New expenses"
+        "newExpense": "New expenses",
+        "addExpense": "Add expense"
+    },
+    "validationError": {
+        "required": "This field is required"
     }
 }

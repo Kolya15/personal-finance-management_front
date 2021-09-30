@@ -6,7 +6,7 @@
         :modal="true"
         class="dialog"
     >
-        <IncomeWindow v-if="dialog.childName === 'incomeWindow'"/>
+        <IncomeOrExpenseWindow v-if="dialog.childName === 'income' ||  dialog.childName === 'expense'"/>
     </Dialog>
 </template>
 <script>
@@ -14,12 +14,12 @@ import { computed } from 'vue'
 import {useStore} from 'vuex'
 
 import Dialog from 'primevue/dialog'
-import IncomeWindow from '../IncomeWindow'
+import IncomeOrExpenseWindow from '../../views/incomeOrExpense/IncomeOrExpenseWindow'
 export default {
     name: 'DialogWindow',
     components: {
         Dialog,
-        IncomeWindow
+        IncomeOrExpenseWindow
     },
     setup() {
         const store = useStore()
