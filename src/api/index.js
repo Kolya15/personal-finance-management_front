@@ -1,6 +1,7 @@
 import axios from 'axios'
 import store from '../store'
 import router from '../router'
+
 const HTTP = axios.create({
     baseURL: process.env.VUE_APP_API_URL || '/',
 })
@@ -15,18 +16,25 @@ HTTP.interceptors.request.use(request => {
 })
 
 HTTP.interceptors.response.use(response => {
-        return Promise.resolve(response)
+        if (response.config.method !== 'get') {
+            store.commit('setNotification', {
+                severity: 'success',
+                summary: 'Success!',
+                detail: response.data.message || 'Success!',
+                closable: false,
+                life: 3000
+            })
+        }
+        return Promise.resolve(response.data)
     }, error => {
-    const notificationError = {
-        severity:'error',
-        summary: 'Error Message',
-        detail:'Message Content',
-        closable: false,
-        life: 3000
-    }
+        store.commit('setNotification', {
+            severity: 'error',
+            summary: 'Error',
+            detail: error.response.data.message || 'Error!',
+            closable: false,
+            life: 3000
+        })
         if (error.response.status === 401) {
-            notificationError.detail = error.response.data.message
-            store.commit('setNotification', notificationError)
             localStorage.removeItem('token')
             router.push('/auth/login')
         }

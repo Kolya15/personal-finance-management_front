@@ -11,10 +11,13 @@ import InputNumber from 'primevue/inputnumber'
 import ToastService from 'primevue/toastservice'
 const app = createApp(App)
 
+import {i18n} from "./plugin/i18n";
+
 import "./utils/defineRule";
 app.component('Button', Button)
 app.component('InputNumber', InputNumber)
 
+app.use(i18n)
 app.use(router)
 app.use(store)
 app.use(PrimeVue)

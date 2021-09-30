@@ -1,12 +1,14 @@
-import { defineRule} from 'vee-validate';
-// import {useI18n} from '../plugin/i18n';
+import { defineRule} from 'vee-validate'
+import {i18n} from '../plugin/i18n'
+const {t} = i18n.global
+//
+// const getValueInObject = (value) => {
+//     return value && typeof value === 'object' ? value.value : value
+// }
 
-// const i18n = useI18n()
-
-defineRule('required', value => {
+defineRule('required',  (value) => {
     if (!value || !value.length) {
-        // return i18n.$t('validationError.required')
-        return 'validationError.required'
+        return t('validationError.required')
     }
     return true;
 });

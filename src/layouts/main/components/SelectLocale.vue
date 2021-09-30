@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import {useI18n} from "../../../plugin/i18n";
+import {inject} from 'vue'
 import {ref} from "vue";
 import {flag} from '../../../mixins/flags'
 
@@ -24,7 +24,7 @@ export default {
     name: 'SelectLocale',
     mixins: [flag],
     setup() {
-        const i18n = useI18n();
+        const i18n = inject('i18n')
         const locales = ref([
             {
                 name: 'English',
@@ -41,7 +41,7 @@ export default {
         const selectedLocale = ref( localStorage.getItem('locale') || 'en')
 
         const setLocale = (value) => {
-            i18n.locale.value = value;
+            i18n.locale = value;
             localStorage.setItem('locale', value)
             selectedLocale.value = value
             openList.value = false

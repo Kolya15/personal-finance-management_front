@@ -13,9 +13,7 @@ export default {
     actions: {
         getCurrentUser({commit}) {
              HTTP.get(apiUrls.currentUser.get).then(response => {
-                commit('setUser', response.data.user)
-                 console.log(response)
-                 return response
+                commit('setUser', response.user)
             })
         },
     },

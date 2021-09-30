@@ -1,7 +1,6 @@
 <template>
     <div id="app">
         <Toast position="bottom-right"/>
-<!--        <button @click="test()">CLICK</button>-->
         <component :is="layout">
             <router-view/>
         </component>
@@ -17,9 +16,9 @@ import './style/reset.scss'
 import './style/global.scss'
 import {useStore} from 'vuex'
 import {watchEffect} from "vue";
-import {provideI18n} from "./plugin/i18n";
 import Toast from 'primevue/toast';
 import { useToast } from 'primevue/usetoast'
+import {i18n} from "./plugin/i18n";
 
 export default {
     computed: {
@@ -28,7 +27,6 @@ export default {
         }
     },
     setup() {
-        provideI18n();
         const store = useStore()
         const toast = useToast();
         watchEffect(() => {
@@ -39,13 +37,13 @@ export default {
                     store.commit('hideNotification')
                 }, message.life)
             }
-
         })
     },
     provide() {
         return {
             apiUrls,
-            http
+            http,
+            i18n: i18n.global
         }
     },
     components: {

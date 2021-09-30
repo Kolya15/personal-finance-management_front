@@ -10,9 +10,9 @@
             </div>
         </div>
         <div class="header__actions">
-            <Button :label="i18n.$t('global.income')" icon="pi pi-plus" class="header__actions_income"
+            <Button :label="$t('global.income')" icon="pi pi-plus" class="header__actions_income"
                     @click="addIncome()"/>
-            <Button :label="i18n.$t('global.expense')" icon="pi pi-minus"
+            <Button :label="$t('global.expense')" icon="pi pi-minus"
                     class="header__actions_expenses p-button-danger"
                     @click="addExpense()"/>
         </div>
@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import {useI18n} from "../../../plugin/i18n";
+import {inject} from 'vue'
 import {useStore} from 'vuex'
 
 import SelectLocale from './SelectLocale';
@@ -34,24 +34,23 @@ export default {
         SelectLocale
     },
     setup() {
-        const i18n = useI18n();
+        const {t} = inject('i18n');
         const store = useStore()
 
         const addIncome = () => {
             store.commit('setDialog', {
-                title: i18n.$t('income.newIncome'),
-                childName: 'incomeWindow'
+                title: t('income.newIncome'),
+                childName: 'income',
             })
         }
         const addExpense = () => {
             store.commit('setDialog', {
-                title: i18n.$t('expenses.newExpense'),
-                childName: 'expenseWindow'
+                title: t('expenses.newExpense'),
+                childName: 'expense'
             })
         }
 
         return {
-            i18n,
             addIncome,
             addExpense
         }
