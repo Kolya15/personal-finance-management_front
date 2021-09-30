@@ -1,0 +1,22 @@
+{
+    "global": {
+        "income": "Income",
+        "expense": "Expense",
+        "amount": "Amount",
+        "description": "Description",
+        "category": "Category",
+        "date": "Date"
+    },
+
+    "income": {
+        "newIncome": "New income",
+        "addIncome": "Add income"
+    },
+    "expenses": {
+        "newExpense": "New expenses",
+        "addExpense": "Add expense"
+    },
+    "validationError": {
+        "required": "This field is required"
+    }
+}

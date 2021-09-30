@@ -1,0 +1,21 @@
+{
+    "global": {
+        "income": "Дохід",
+        "expense": "Витрата",
+        "amount": "Сума",
+        "description": "Опис",
+        "category": "Категорія",
+        "date": "Дата"
+    },
+    "income": {
+        "newIncome": "Новий дохід",
+        "addIncome": "Додати дохід"
+    },
+    "expenses": {
+        "newExpense": "Нова витрата",
+        "addExpense": "Додати витрату"
+    },
+    "validationError": {
+        "required": "Поле має бути заповнене"
+    }
+}
