@@ -1,4 +1,7 @@
 {
+    "user": {
+        "currentBalance": "Поточный баланс"
+    },
     "global": {
         "income": "Дохід",
         "expense": "Витрата",
@@ -9,11 +12,13 @@
     },
     "income": {
         "newIncome": "Новий дохід",
-        "addIncome": "Додати дохід"
+        "addIncome": "Додати дохід",
+        "recentIncome": "Останні доходи"
     },
     "expenses": {
         "newExpense": "Нова витрата",
-        "addExpense": "Додати витрату"
+        "addExpense": "Додати витрату",
+        "recentExpense": "Останні витрати"
     },
     "validationError": {
         "required": "Поле має бути заповнене"

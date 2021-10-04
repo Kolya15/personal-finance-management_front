@@ -8,12 +8,11 @@
 </template>
 
 <script>
-import AuthLayout from "./layouts/AuthLayout";
+import AuthLayout from "./layouts/auth/AuthLayout";
 import MainLayout from "./layouts/main/MainLayout";
 import apiUrls from './api/apiUrls';
 import http from './api';
-import './style/reset.scss'
-import './style/global.scss'
+// import './style/index.scss'
 import {useStore} from 'vuex'
 import {watchEffect} from "vue";
 import Toast from 'primevue/toast';

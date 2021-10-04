@@ -56,7 +56,7 @@ export default {
 
         const listCategory = ref([])
         http.get(apiUrls.categories[checkIncomeTypeWindow.value ? 'income' : 'expense'].get).then(response => {
-            listCategory.value = response.category
+            listCategory.value = response
         })
 
         const submit = () => {

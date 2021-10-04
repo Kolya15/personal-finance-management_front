@@ -3,7 +3,9 @@
         <DialogWindow/>
         <custom-header class="main-layout__header"/>
         <div class="main-layout__content">
-            <SideWindowWithInformation/>
+            <Suspense>
+                <SideWindowWithInformation/>
+            </Suspense>
             <router-view/>
         </div>
     </div>

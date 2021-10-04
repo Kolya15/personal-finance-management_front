@@ -6,17 +6,12 @@ import auth from './modules/auth'
 import windows from './modules/windows'
 import currentUser from './modules/currentUser';
 
+// Actions
 
+import actions from "./actions";
 
 export default createStore({
-    state: {
-        test: 'test'
-    },
-    mutations: {},
-    actions: {},
-    getters: {
-        test: state => state.test
-    },
+    actions,
     modules: {
         app,
         auth,

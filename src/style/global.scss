@@ -1,5 +1,14 @@
+@import "variables";
+
 .width{
   &-full{
     width: 100%;
+  }
+}
+
+.custom {
+  &__divider {
+    background-color: $customDividerColor;
+    height: 1px;
   }
 }

@@ -1,4 +1,7 @@
 {
+    "user": {
+        "currentBalance": "Current balance"
+    },
     "global": {
         "income": "Income",
         "expense": "Expense",
@@ -7,14 +10,15 @@
         "category": "Category",
         "date": "Date"
     },
-
     "income": {
         "newIncome": "New income",
-        "addIncome": "Add income"
+        "addIncome": "Add income",
+        "recentIncome": "Recent income"
     },
     "expenses": {
         "newExpense": "New expenses",
-        "addExpense": "Add expense"
+        "addExpense": "Add expense",
+        "recentExpense": "Recent expense"
     },
     "validationError": {
         "required": "This field is required"

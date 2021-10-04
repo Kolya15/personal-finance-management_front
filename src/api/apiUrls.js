@@ -4,7 +4,8 @@ export default {
         login: 'auth/login'
     },
     currentUser: {
-        get: 'current-user'
+        get: 'current-user',
+        lastIncomesAndExpenses: 'current-user/last-incomes-and-expenses'
     },
     users: {
         get: 'user/all'
